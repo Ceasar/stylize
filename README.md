@@ -1,5 +1,4 @@
 
-
 # stylize
 
 stylize is a style checker for English.
@@ -17,7 +16,7 @@ TODO: set up on pip
 
 ## syntastic
 
-stylize can be configured to work with syntastic via:
+stylize can be configured to work with [syntastic][1] via:
 
 ```
 ln -s `pwd`/auxillary/md/ ~/.vim/bundle/syntastic/syntax_checkers/md
@@ -29,3 +28,5 @@ ln -s `pwd`/auxillary/md/ ~/.vim/bundle/syntastic/syntax_checkers/md
 stylize README.md
 README.md:9:53: X's Y -> Y of X
 ```
+
+[1]: https://github.com/scrooloose/syntastic
