@@ -1,3 +1,4 @@
+import re
 import sys
 
 
@@ -31,6 +32,14 @@ RULES = [
     rule_possesive,
 ]
 
+REGEXES = []
+
+with open("regexes/comma.txt") as f:
+    lines = iter(f)
+    pattern = next(lines)
+    repl = next(lines)
+    REGEXES.append((pattern, repl))
+
 
 def find_errors(filename):
     with open(sys.argv[1]) as f:
@@ -43,6 +52,9 @@ def find_errors(filename):
                     c, e = rv
                     yield Error(filename, i, c, e)
                     break
+            for pattern, repl in REGEXES:
+                if re.match(pattern, line):
+                    yield Error(filename, i, 0, re.sub(pattern, repl, line))
 
 
 def _main():
